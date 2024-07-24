@@ -1,0 +1,39 @@
+<h3 [innerText] = title></h3>
+
+<div [hidden]="hotelrooms">
+<div>Customer name:{{name}}</div>
+<div>Customer age:{{age}}</div>
+</div>
+<button (click)="toggle()">Click</button>
+
+{{rooms.availableRooms ?? 'No rooms'}}
+
+<div *ngIf="rooms?.availableRooms">
+    List_rooms {{rooms.totalRooms}}
+</div>
+
+<!-- {{roomData | json}} -->
+
+<table class="table">
+<thead>
+    <tr>
+    <th>Room No</th>
+    <th>Room Type</th>
+    <th>Room Price</th>
+    <th>Room CheckIn</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let room of roomData">
+        <td>{{room.roomNo }}</td>
+        <td>{{room.roomType}}</td>
+        <td>{{room.price | currency :'INR'}}</td>
+        <td>{{room.checkinTime | date:'short'}}</td>
+    </tr>
+</tbody>
+</table>
+
+<div [ngSwitch]="login">
+   <div *ngSwitchCase="'patient'">Welcome to patient Login</div>
+   <div *ngSwitchDefault="'doctor'">Welcome to Doctor</div>
+</div>
